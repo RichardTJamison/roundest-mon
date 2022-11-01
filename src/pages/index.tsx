@@ -3,9 +3,17 @@ import { trpc } from '@/utils/trpc'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import React,{useMemo,useState} from 'react'
 
 export default function Home() {
-  const [first,second] = getOptionsForVote()
+  const [ids,updateIds] = useState(()=>getOptionsForVote())
+  const [first,second]= ids
+  const firstPokemon = trpc.getPokemonById.useQuery({id:first})
+  const secondPokemon = trpc.getPokemonById.useQuery({id:second})
+
+  if(!firstPokemon || !secondPokemon)
+  console.log(firstPokemon.data)
+  console.log(secondPokemon.data)
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center">
       <div className='text-2xl text-center'>
