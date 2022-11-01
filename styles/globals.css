@@ -14,7 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
-
+body{
+  @apply text-white bg-gray-200;
+  background-image:var(--wiggles-bg);
+  overscroll-behavior-y: none;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -24,3 +28,7 @@ a {
     background: black;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
