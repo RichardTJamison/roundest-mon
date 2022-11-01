@@ -4,15 +4,14 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React, { useMemo, useState } from "react";
+
 const btn = "inline-flex items-center px-2.5 border border-gray-300 shadow-sm font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-effect-2 focus:ring-indigo-500"
 export default function Home() {
   const [ids, updateIds] = useState(() => getOptionsForVote());
   const [first, second] = ids;
   const firstPokemon = trpc.getPokemonById.useQuery({ id: first });
   const secondPokemon = trpc.getPokemonById.useQuery({ id: second });
-
   if (!firstPokemon || !secondPokemon) return <div>Loading...</div>;
-
   const voteForRoundest = (selected:number) => {
     updateIds(getOptionsForVote)
   }
