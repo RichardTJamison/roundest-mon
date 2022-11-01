@@ -15,7 +15,7 @@ a {
   box-sizing: border-box;
 }
 body{
-  @apply text-white bg-gray-200;
+  @apply text-white bg-gray-400;
   background-image:var(--wiggles-bg);
   overscroll-behavior-y: none;
 }
